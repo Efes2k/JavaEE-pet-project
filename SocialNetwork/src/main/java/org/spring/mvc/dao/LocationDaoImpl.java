@@ -19,7 +19,6 @@ public class LocationDaoImpl implements LocationDao {
 	
 	public LocationDaoImpl() {
 	}
-	
 
 	@Override
 	@SuppressWarnings(value="unchecked")
@@ -30,7 +29,6 @@ public class LocationDaoImpl implements LocationDao {
 		List<City> listCity = query.list();
 		return listCity;
 	}
-	
 	
 	private Session currentSession() {
 		Session currentSession = sessionFactory.getCurrentSession();		

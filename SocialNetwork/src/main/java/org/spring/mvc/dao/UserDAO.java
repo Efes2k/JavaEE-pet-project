@@ -29,6 +29,4 @@ public interface UserDAO extends CrudDao {
 	
 	void changeField(String field, String changes, int id);
 	
-	
-	
 }

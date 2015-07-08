@@ -31,7 +31,6 @@ public class CrudDaoBean implements CrudDao {
 		}
 	}
 	
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T save(T o) throws DalException {
@@ -42,7 +41,6 @@ public class CrudDaoBean implements CrudDao {
 		}
 	}
 	
-	
 	@SuppressWarnings("unchecked")
 	public <T, PK extends Serializable> T find(Class<T> type, PK id)
 			throws DalException {
@@ -52,7 +50,6 @@ public class CrudDaoBean implements CrudDao {
 			throw new DalException(e);
 		}
 	}
-	
 
 	public <T, PK extends Serializable> void delete(Class<T> type, PK id) throws DalException {
 		try {
@@ -64,7 +61,6 @@ public class CrudDaoBean implements CrudDao {
 			throw new DalException(e);
 		}
 	}
-	
 
 	@SuppressWarnings({ "unchecked" })
 	public <T> List<T> list(Class<T> type) throws DalException {
@@ -74,7 +70,6 @@ public class CrudDaoBean implements CrudDao {
 			throw new DalException(e);
 		}
 	}
-
 	
 	@Override
 	public <T> void saveOrUpdate(T o) throws DalException {
@@ -84,8 +79,6 @@ public class CrudDaoBean implements CrudDao {
 			throw new DalException();
 		}
 	}
-	
-
 	
 	private Session currentSession() {
 		Session currentSession = sessionFactory.getCurrentSession();		

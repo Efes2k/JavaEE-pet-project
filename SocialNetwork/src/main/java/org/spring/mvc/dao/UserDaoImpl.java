@@ -63,7 +63,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		return listComm;
 	}
 	
-
 	@Override
 	@Transactional
 	public void changeAvatar(User user) throws DalException {
@@ -72,7 +71,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		query.setParameter("newAvatar", user.getAvatar());
 		query.executeUpdate();
 	}
-
 	
 	@Override
 	@Transactional
@@ -84,7 +82,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		
 	}
 	
-	
 	@Transactional
 	public void changeStatus(String field, boolean changes,int id) {
 		Query query = currentSession().createQuery("update User set "+ field +" = :field" + " where id = :id");
@@ -93,7 +90,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		System.out.println(" updating " + id + "  " + changes);
 		query.executeUpdate();
 	}
-	
 	
 	@Override
 	@SuppressWarnings(value="unchecked")
@@ -113,7 +109,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 
 	return criteria.list();
 	}
-	
 
 	@Override
 	@Transactional
@@ -123,16 +118,13 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		query.executeUpdate();
 	}
 
-	
 	@Override
 	@Transactional
 	public void deleteMessage(Integer id) throws DalException {
 		Message mess = (Message) currentSession().createCriteria(Message.class).add(Restrictions.eq("id", id)).uniqueResult();
 		currentSession().delete(mess);
 		currentSession().flush();
-		
 	}
-	
 
 	@Override
 	@Transactional
@@ -144,7 +136,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		
 	}
 	
-	
 	private HashSet<String> parseQuery(String searchString){
 		String[] arr = searchString.split("[,;:.!?\\s]+");
 		HashSet<String> list = new HashSet<String>();
@@ -154,12 +145,10 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		return list;
 	}
 	
-	
 	private Session currentSession() {
 		Session currentSession = sessionFactory.getCurrentSession();		
 		return currentSession;
 	}
-	
 	
 	
 }
