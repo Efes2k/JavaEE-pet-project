@@ -12,7 +12,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.spring.mvc.entity.Model;
 import org.spring.mvc.entity.User;
 
-
 @Entity
 @Table(name="city")
 @JsonIgnoreProperties({ "countryIn"})
