@@ -185,7 +185,6 @@ public class User extends Model implements UserDetails,Serializable {
 	public void setMessagesWhere(List<Message> messagesWhere) {
 		this.messagesWhere = messagesWhere;
 	}
-	
 
 	public UserRole getUserRoles() {
 		return userRoles;
@@ -237,8 +236,6 @@ public class User extends Model implements UserDetails,Serializable {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -313,4 +310,5 @@ public class User extends Model implements UserDetails,Serializable {
 		return true;
 	}
 
+	
 }
