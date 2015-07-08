@@ -104,7 +104,4 @@ public class Comment extends Model implements Serializable {
 	}
 	
 	
-	
-	
-	
 }

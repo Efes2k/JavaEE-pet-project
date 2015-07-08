@@ -134,8 +134,6 @@ public class User extends Model implements UserDetails,Serializable {
 		this.lastName = lastName;
 	}
 
-
-
 	public List<MyFriends> getMyFriends() {
 		return myFriends;
 	}
@@ -155,8 +153,6 @@ public class User extends Model implements UserDetails,Serializable {
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
 	}
-
-
 
 	public String getPhoneNumber() {
 		return phoneNumber;

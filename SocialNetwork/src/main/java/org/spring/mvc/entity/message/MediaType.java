@@ -30,8 +30,6 @@ public class MediaType implements Serializable {
 	public List<String> getTypeList() {
 		return typeList;
 	}
-
-	
 	
 
 }

@@ -28,8 +28,6 @@ public class MessageMedia extends Model implements Serializable {
 	@OneToMany(mappedBy = "messMedia", orphanRemoval=true)
 	private List<Message> message;
 	
-
-	
 	public MessageMedia() {
 		super();
 	}
@@ -40,7 +38,6 @@ public class MessageMedia extends Model implements Serializable {
 		this.type = type;
 		this.fileName = fileName;
 	}
-	
 	
 	public byte[] getMedia() {
 		return media;
@@ -60,25 +57,17 @@ public class MessageMedia extends Model implements Serializable {
 		this.type = type;
 	}
 
-
-	
-	
 	public List<Message> getMessage() {
 		return message;
 	}
-
 
 	public void setMessage(List<Message> message) {
 		this.message = message;
 	}
 
-
-
-
 	public String getFileName() {
 		return fileName;
 	}
-
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
@@ -115,8 +104,5 @@ public class MessageMedia extends Model implements Serializable {
 		return true;
 	}
 
-
-	
-	
 	
 }

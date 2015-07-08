@@ -18,15 +18,13 @@ public class UserManager  implements UserDetailsService {
 	private UserDAO userDao;
 	
 	public UserManager(){
-		
 	}
 
 	@Override
 	@Transactional
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User result = null;
+		
 		try {
 			result = (User)userDao.findByName(username);
 		
@@ -34,21 +32,16 @@ public class UserManager  implements UserDetailsService {
 			e.printStackTrace();
 		}
 		
-		
-		
 		if(result == null) {
 			System.out.println("user not found");
 			throw new AuthenticationServiceException("Incorrect login/password");
 		}
-		System.out.println(result.getPassword());
 
 		if(result.isAccountNonLocked() == false) {
 			throw new AuthenticationServiceException ("Your account has been suspended. Contact with administrator.");
 		}
-	
 		return result;
 	}
 	
 	
-
 }

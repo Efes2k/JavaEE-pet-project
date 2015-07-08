@@ -15,9 +15,7 @@ import org.springframework.stereotype.Service;
 public class PasswordHelper implements PasswordEncoder{
 
 	private MessageDigest md;
-	
 	private static final Logger logger = Logger.getLogger(LoginController.class);
-	
 	
 	 public PasswordHelper() {
 		 try {
@@ -53,8 +51,6 @@ public class PasswordHelper implements PasswordEncoder{
 		
 		return encode(rawPassword).equals(encodePassword);
 	}
-	
-	
 	
 	
 }

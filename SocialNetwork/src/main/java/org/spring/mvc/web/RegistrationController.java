@@ -84,7 +84,6 @@ public class RegistrationController {
 	public @ResponseBody List<City> getCities(HttpServletRequest request) throws DalException{
 		return locDao.getCitues(Integer.parseInt(request.getParameter("countryId")));
 	}
-	
 
 	
 }

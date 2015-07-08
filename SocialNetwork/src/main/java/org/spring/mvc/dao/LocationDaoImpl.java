@@ -19,7 +19,7 @@ public class LocationDaoImpl implements LocationDao {
 	
 	public LocationDaoImpl() {
 	}
-
+	
 
 	@Override
 	@SuppressWarnings(value="unchecked")

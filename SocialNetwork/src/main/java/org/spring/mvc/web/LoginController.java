@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 	private final String ERROR_MESSAGE = "Incorrect login/password";
 	
-//	private static final Logger logger = Logger.getLogger(LoginController.class);
-	
-	
-//	public String home(Locale locale, Model model) 
 	@RequestMapping(value = "/")
 	public String home() {
 		

@@ -19,8 +19,6 @@ public class UserRole extends Model implements Serializable{
 	@OneToMany(mappedBy="userRoles")
 	private List<User> users;
 	
-	
-	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "title")
 	private ListRole listRole;
@@ -79,8 +77,5 @@ public class UserRole extends Model implements Serializable{
 		return true;
 	}
 
-
-
-	
 
 }

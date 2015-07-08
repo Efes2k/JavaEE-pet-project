@@ -22,7 +22,6 @@ public class Country extends Model implements Serializable{
 	@OneToMany(mappedBy = "countryIn")
 	private List<City> cities;
 
-	
 	public Country() {
 		super();
 	}
@@ -72,8 +71,6 @@ public class Country extends Model implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 	
 	
 }

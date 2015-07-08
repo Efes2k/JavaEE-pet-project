@@ -58,8 +58,6 @@ public class City extends Model implements Serializable {
 		this.users = users;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,8 +93,6 @@ public class City extends Model implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 	
 	
 }

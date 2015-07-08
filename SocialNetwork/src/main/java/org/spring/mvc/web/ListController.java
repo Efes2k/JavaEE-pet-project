@@ -34,7 +34,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "/list", method = RequestMethod.GET)
 public class ListController {
 
-	
 	@Autowired
 	private UserDAO userDao;
 	
@@ -164,7 +163,6 @@ public class ListController {
 
 		return "redirect:/list/{username}/settings";
 	}
-	
 	
 	// Validate image
 		private boolean validateImage(MultipartFile image) {
@@ -298,8 +296,6 @@ public class ListController {
 		}
 	}
 
-	
-	
 	// Validate user
 	public void validateUser(User user) throws  AccessDeniedException {
 		if (user == null) {

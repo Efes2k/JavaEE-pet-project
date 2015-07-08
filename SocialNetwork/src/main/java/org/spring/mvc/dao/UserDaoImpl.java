@@ -33,7 +33,7 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 
 	@Override
 	@Transactional
-	public User findByName(String username) {
+	public User findByName(String username) throws DalException {
 		Query query = currentSession().createQuery("from User where username = :username");
 		query.setParameter("username", username);
 		User user = (User)query.uniqueResult();
@@ -72,7 +72,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		query.setParameter("newAvatar", user.getAvatar());
 		query.executeUpdate();
 	}
-	
 
 	
 	@Override
@@ -124,6 +123,7 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		query.executeUpdate();
 	}
 
+	
 	@Override
 	@Transactional
 	public void deleteMessage(Integer id) throws DalException {
@@ -132,6 +132,7 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		currentSession().flush();
 		
 	}
+	
 
 	@Override
 	@Transactional
@@ -152,7 +153,6 @@ public class UserDaoImpl extends CrudDaoBean implements UserDAO  {
 		}
 		return list;
 	}
-	
 	
 	
 	private Session currentSession() {
