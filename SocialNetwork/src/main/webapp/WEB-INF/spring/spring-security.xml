@@ -1,0 +1,49 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans			http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security		http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/context 		http://www.springframework.org/schema/context/spring-context.xsd
+	">
+
+
+	<!-- Spring security -->
+	<context:component-scan base-package="org.spring.mvc" />
+	
+	<http pattern="/css/**" security="none" />
+	<http pattern="/images/**" security="none" />
+	<http pattern="/js/**" security="none" />
+	<http pattern="/fonts/**" security="none" />
+	
+	
+	<http auto-config="false" use-expressions="true" disable-url-rewriting="true" >
+
+	     <remember-me  token-validity-seconds="1209600" />
+		 
+		<form-login login-page="/signin" default-target-url="/list"	authentication-failure-url="/signin-failure" />
+
+		<logout invalidate-session="true"  logout-success-url="/logout?logout"  delete-cookies="JSESSIONID" />
+		
+ 		 <session-management invalid-session-url="/signin"  session-authentication-error-url="/signin">
+       		 <concurrency-control max-sessions="1"   error-if-maximum-exceeded="true" expired-url="/signin?login_timeout=1"/>
+   		 </session-management>
+   		 
+		<intercept-url pattern="/list*" access="isAuthenticated()"  />
+		<intercept-url pattern="/list/*" access="isAuthenticated()" />
+		<intercept-url pattern="/list" access="isAuthenticated()" />
+	</http>
+
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userManager">
+				<password-encoder ref="passwordHelper"></password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+		<beans:property name="rolePrefix" value=""></beans:property>
+	</beans:bean>
+	
+</beans:beans>
