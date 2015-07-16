@@ -1,7 +1,7 @@
 # Spring-Hibernate pet-project
 Social Network Application
 
-This sample aims to demonstrate the simple possible Spring-based Java webapp. 
+*This* sample aims to demonstrate the simple possible Spring-based Java webapp.
 Here we walk through the entire content of the application.
 
 ##It includes:
