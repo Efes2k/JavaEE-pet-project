@@ -11,7 +11,7 @@ Here we walk through the entire content of the application.
 - MySQL database.
 - Hibernate for working with DB.
 - Logger log4j.
-- Apache Tomcat.
+- Apache Tomcat 7.0.
 - Ajax,JQuery.
 
 **Functionality:**
@@ -44,4 +44,7 @@ The following items should be installed in your system:
 2) Inside Eclipse
 
     File -> Import -> Maven -> Existing Maven project
+    
+3) Execute script 
 
+    location.sql
