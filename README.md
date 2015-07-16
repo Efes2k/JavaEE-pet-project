@@ -4,7 +4,7 @@ Social Network Application
 This sample aims to demonstrate the simple possible Spring-based Java webapp. 
 Here we walk through the entire content of the application.
 
-It includes:
+##It includes:
 
     -Maven for dependency management.
     -Spring IoC, Spring Security, SpringMVC.
@@ -14,7 +14,7 @@ It includes:
     -Apache Tomcat.
     -Ajax,JQuery.
 
-Functionality:
+##Functionality:
 
     -New user registration.
     -Authorization and authentication.
@@ -29,7 +29,7 @@ Functionality:
     -Localization.
 
 
-###Working with application in Eclipse/STS.
+##Working with application in Eclipse/STS.
 
 The following items should be installed in your system:
 
