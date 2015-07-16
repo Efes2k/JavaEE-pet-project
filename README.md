@@ -27,3 +27,21 @@ Functionality:
     -Searching users(including autocomplite search).
     -Password encryption MD5.
     -Localization.
+
+
+Working with application in Eclipse/STS.
+
+The following items should be installed in your system:
+
+    Maven 3 (http://www.sonatype.com/books/mvnref-book/reference/installation.html)
+    git command line tool (https://help.github.com/articles/set-up-git)
+    Eclipse with the m2e plugin (m2e is installed by default when using the STS (http://www.springsource.org/sts) distribution of Eclipse)
+
+
+1) In the command line
+
+git clone https://github.com/Efes2k/JavaEE-pet-project.git
+
+2) Inside Eclipse
+
+File -> Import -> Maven -> Existing Maven project
