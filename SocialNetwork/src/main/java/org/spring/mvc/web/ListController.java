@@ -38,12 +38,13 @@ public class ListController {
 	private UserDAO userDao;
 	
 	private static final Logger logger = Logger.getLogger(LoginController.class);
-	
+
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String homePage(Model model) throws DalException {
 		User user = getPrincipal();
 		model.addAttribute("userInfo", user);
+		
 		return "redirect:/list/" + user.getUsername();
 	}
 
@@ -56,7 +57,7 @@ public class ListController {
 
 		if (validateSubcriber(username)) model.addAttribute("subOk", "true");
 		else model.addAttribute("subOk", "false");
-
+		logger.info(getPrincipal().getId() +  " go to profile: " +  user.getId());
 		return "list";
 	}
 
@@ -65,13 +66,17 @@ public class ListController {
 		User me = getPrincipal();
 		User friend = userDao.findByName(username);
 		User principal = userDao.findByName(me.getUsername());
-
+		boolean status = false;
 		for (MyFriends fr : principal.getMyFriends()) {
-			if (fr.getMyFriend().getUsername().equals(friend.getUsername()))
-				return true;
+			if (fr.getMyFriend().getUsername().equals(friend.getUsername())){
+				status = true;
+				break;
+			}
+			else status = false;
 		}
-		return false;
-
+		
+		logger.info(getPrincipal().getId() + " friend of: " + principal.getId() + " is " + status);
+		return status;
 	}
 
 	@RequestMapping(value = "/{username}/removeFriend")
@@ -88,6 +93,7 @@ public class ListController {
 			temp = me.getMyFriends().get(i);
 			if (temp.getMyFriend().getUsername().equals(username)) {
 				me.getMyFriends().remove(i);
+				logger.info(getPrincipal().getId() + " remove friend: " + temp.getId());
 				userDao.deleteFriend(temp.getId());
 			}
 		}
@@ -99,6 +105,7 @@ public class ListController {
 		User friend = userDao.findByName(username);
 		MyFriends fr = new MyFriends(user, friend);
 		userDao.save(fr);
+		logger.info(user.getId() + " add friend w id:  " + friend.getId());
 	}
 
 	@RequestMapping(value = "/{username}/addMessage",method = RequestMethod.POST)
@@ -121,7 +128,7 @@ public class ListController {
 		message.setWhere(where);
 		message.setOwner(user);
 		userDao.save(message);
-
+		logger.info(user.getId() + " add messege on " + where.getId());
 		return "redirect:/list/{username}";
 	}
 
@@ -133,6 +140,7 @@ public class ListController {
 	@RequestMapping(value = "/{username}/removeMessage/{id}", method = RequestMethod.POST)
 	public String removeMessage(@PathVariable String username, @PathVariable int id) throws DalException {
 		userDao.deleteMessage(id);
+		logger.info("Remove messege " + id);
 		return "redirect:/list/{username}";
 	}
 
@@ -143,12 +151,14 @@ public class ListController {
 		comment.setAuthor(getPrincipal());
 		comment.setMessageWhere(userDao.find(Message.class, messageId));
 		userDao.save(comment);
+		logger.info(getPrincipal().getId() + " add comment on messege: " + messageId);
 		return comment;
 	}
 
 	@RequestMapping(value = "/{username}/removeComment/{id}", method = RequestMethod.POST)
 	public @ResponseBody String removeComment(@PathVariable int id,	@PathVariable String username) throws DalException {
 		userDao.delete(Comment.class, id);
+		logger.info(getPrincipal().getId() + " remove comment: " + id);
 		return "ok";
 	}
 
@@ -160,7 +170,7 @@ public class ListController {
 			user.setAvatar(image.getBytes());
 			userDao.changeAvatar(user);
 		}
-
+		logger.info(getPrincipal().getId() + " change avatar");
 		return "redirect:/list/{username}/settings";
 	}
 	
@@ -202,6 +212,7 @@ public class ListController {
 		
 		validateUser(user,username);
 		model.addAttribute("friendList", user.getMyFriends());
+		logger.info(getPrincipal().getId() + " go to page MyFriends" );
 		return "myfriends";
 		
 	}
@@ -213,6 +224,7 @@ public class ListController {
 		
 		validateUser(userPr, username);
 		model.addAttribute("galleryList", userDao.getUserMessages("user_id", user.getId()));
+		logger.info(getPrincipal().getId() + " go to page Gellery" );
 		return "gallery";
 		
 	}
@@ -223,11 +235,13 @@ public class ListController {
 		User user = userDao.findByName(userPr.getUsername());
 		
 		validateUser(user,username);
+		logger.info(getPrincipal().getId() + " go to page contactUs" );
 		return "contactUs";
 	}
 
 	@RequestMapping(value = "/{username}/administration")
 	public String adminPage(@PathVariable String username, Model model)	throws DalException {
+		logger.info(getPrincipal().getId() + " go to admin page" );
 		return "administration";
 	}
 
@@ -236,6 +250,7 @@ public class ListController {
 		User userPr = getPrincipal();
 		
 		validateUser(userPr, username);
+		logger.info(getPrincipal().getId() + " go to page Settings" );
 		return "settings";
 	}
 
