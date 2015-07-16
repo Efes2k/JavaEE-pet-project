@@ -39,9 +39,9 @@ The following items should be installed in your system:
 
 1) In the command line
 
-git clone https://github.com/Efes2k/JavaEE-pet-project.git
+    git clone https://github.com/Efes2k/JavaEE-pet-project.git
 
 2) Inside Eclipse
 
-File -> Import -> Maven -> Existing Maven project
+    File -> Import -> Maven -> Existing Maven project
 
