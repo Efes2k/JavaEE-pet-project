@@ -29,7 +29,7 @@ Functionality:
     -Localization.
 
 
-##Working with application in Eclipse/STS.
+###Working with application in Eclipse/STS.
 
 The following items should be installed in your system:
 
