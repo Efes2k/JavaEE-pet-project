@@ -25,7 +25,6 @@ Here we walk through the entire content of the application.
 - Ability to add/remove messages on your own and other users pages(images,audio).
 - Ability to add/remove comments on messages.
 - Gallery with your pictures.
-
 - Password encryption MD5.
 - Localization.
 
