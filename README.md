@@ -19,12 +19,13 @@ Here we walk through the entire content of the application.
 - New user registration.
 - Authorization and authentication.
 - The roles(Admin/User) privileges (including user blocking in admin's page).
+- Searching users(including autocomplite search).
 - Ability to change user settings.
 - Ability to add/remove friends.
 - Ability to add/remove messages on your own and other users pages(images,audio).
 - Ability to add/remove comments on messages.
 - Gallery with your pictures.
-- Searching users(including autocomplite search).
+
 - Password encryption MD5.
 - Localization.
 
