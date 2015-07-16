@@ -45,3 +45,6 @@ git clone https://github.com/Efes2k/JavaEE-pet-project.git
 2) Inside Eclipse
 
 File -> Import -> Maven -> Existing Maven project
+
+
+[Обычная ссылка в строке](https://www.google.com)
