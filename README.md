@@ -14,7 +14,7 @@ Here we walk through the entire content of the application.
     -Apache Tomcat.
     -Ajax,JQuery.
 
-##Functionality:
+-##Functionality:
 
     -New user registration.
     -Authorization and authentication.
