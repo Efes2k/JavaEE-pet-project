@@ -31,8 +31,10 @@ Here we walk through the entire content of the application.
 **Working with application in Eclipse/STS.**
 
 The following items should be installed in your system:
-    - [Maven 3] (https://www.sonatype.com/books/mvnref-book/reference/installation.html)
+    - Maven 3 (https://www.sonatype.com/books/mvnref-book/reference/installation.html)
+    
     - git command line tool (https://help.github.com/articles/set-up-git)
+    
     - Eclipse with the m2e plugin (m2e is installed by default when using the STS 
        (http://www.springsource.org/sts) distribution of Eclipse)
 
@@ -45,5 +47,3 @@ git clone https://github.com/Efes2k/JavaEE-pet-project.git
 
 File -> Import -> Maven -> Existing Maven project
 
-
-[Обычная ссылка в строке](https://www.google.com)
