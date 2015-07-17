@@ -32,7 +32,6 @@ public class CrudDaoBean implements CrudDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
 	public <T> T save(T o) throws DalException {
 		try {
 			return (T) currentSession().save(o);
@@ -71,7 +70,6 @@ public class CrudDaoBean implements CrudDao {
 		}
 	}
 	
-	@Override
 	public <T> void saveOrUpdate(T o) throws DalException {
 		try {
 			 currentSession().saveOrUpdate(o);
