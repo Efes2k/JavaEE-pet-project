@@ -181,16 +181,15 @@
 				type: 'GET',
 				success: function(data){
 					var respContent = "";
-					 var time = new Date().getTime();
-					 var d = new Date(time);
-					 
-					 
+ 
 					$.each(data, function(index, currEmp) {	
+						var d = new Date(currEmp.dateOfBirth);
+						
 						respContent +="<tr> <th> <c:url value='/list/" + currEmp.username + "/imageDisplay?scale=true&w=100&h=100' var='avaUrl'></c:url>";
 						respContent +="<img src='${avaUrl}' alt='avatar'	class='img-rounded img-responsive'style='width:100px;height:90px;' /> </th>";
-						respContent +="<th>" + currEmp.firstName +  ","+currEmp.lastName  +" <br/>";
-						respContent += d.getFullYear() + "-"  +d.getMonth() + "-" + d.getDate() +"</th>";
-						respContent +="<th></th>";
+						respContent +="<th>" + currEmp.firstName +  ", "+currEmp.lastName  +" <br/>";
+						respContent += d.getFullYear() + "-"  + ("0" + (d.getMonth() + 1)).slice(-2)  + "-" + ("0" + d.getDate()).slice(-2) +"</th>";
+						respContent +="<th>" +currEmp.city.cityName  + "<br/>" + currEmp.city.countryIn.countryName+ "</th>";
 						respContent +="<th>" + currEmp.email +  "</th>";
 						respContent +="<th><c:url value='/list/" + currEmp.username + "' var='contUrl'></c:url>";
 						respContent +="<a href='${contUrl}'  class='btn btn-primary'><spring:message code='label.social' /></a>";
@@ -206,20 +205,6 @@
 						}
 						
 						respContent +="</th></tr>";
-						
-						
-						
-				
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						
 			         }); 
 		            $("#searchResult").html(respContent);    

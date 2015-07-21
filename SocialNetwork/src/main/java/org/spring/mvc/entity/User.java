@@ -16,8 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.ser.std.DateSerializer;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.spring.mvc.entity.location.City;
@@ -28,7 +27,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({ "owner", "where", "messagesWhere","userRoles","avatar","city","screenImage","myFriends","messages"})
+@JsonIgnoreProperties({ "owner", "where", "messagesWhere","userRoles","avatar","screenImage","myFriends","messages"})
 public class User extends Model implements UserDetails,Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -62,6 +61,7 @@ public class User extends Model implements UserDetails,Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "city_id")
+	@JsonManagedReference
 	private City city;
 
 	@OneToMany(mappedBy = "owner")
@@ -78,7 +78,6 @@ public class User extends Model implements UserDetails,Serializable {
 
 	@Column(name = "avatar",nullable = true)
 	private byte[] avatar;
-
 	
 	@OneToMany(targetEntity = MyFriends.class, mappedBy = "me",fetch = FetchType.EAGER, orphanRemoval = true)
 	@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE, CascadeType.REMOVE })  

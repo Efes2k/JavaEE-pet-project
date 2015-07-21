@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
 import org.spring.mvc.entity.Model;
 
 @Entity
@@ -20,6 +21,7 @@ public class Country extends Model implements Serializable{
 	private String countryName;
 
 	@OneToMany(mappedBy = "countryIn")
+	@JsonBackReference
 	private List<City> cities;
 
 	public Country() {

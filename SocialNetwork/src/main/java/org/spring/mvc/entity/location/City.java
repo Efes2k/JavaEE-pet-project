@@ -2,19 +2,22 @@ package org.spring.mvc.entity.location;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.spring.mvc.entity.Model;
 import org.spring.mvc.entity.User;
 
 @Entity
 @Table(name="city")
-@JsonIgnoreProperties({ "countryIn"})
+//@JsonIgnoreProperties({ "countryIn"})
 public class City extends Model implements Serializable {
 
 	private static final long serialVersionUID = 8873977608833214477L;
@@ -24,9 +27,11 @@ public class City extends Model implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "country_id")
+	@JsonManagedReference
 	private Country countryIn;
 	
 	@OneToMany(mappedBy = "city")
+	@JsonBackReference
 	private List<User> users;
 	
 	public City() {
