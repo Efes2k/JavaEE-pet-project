@@ -51,8 +51,8 @@
 		<beans:property name="maxUploadSize" value="70000000" />
 	 </beans:bean>
 	
-	
 	<!-- Exception resolver -->
+	
 	<beans:bean	class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<beans:property name="exceptionMappings">
 			<beans:map>
@@ -61,8 +61,5 @@
 		</beans:property>
 		<beans:property name="defaultErrorView" value="/errors/dalExc" />
 	</beans:bean>
-	
-
-	
 	
 </beans:beans>

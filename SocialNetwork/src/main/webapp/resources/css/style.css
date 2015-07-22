@@ -38,7 +38,7 @@ body
    overflow: hidden;
    background: url(new_arrow.png) no-repeat right #ddd;
    border: 1px solid #ccc;
-   }
+}
    
 .selectContainer{
 	width:70px;
@@ -269,16 +269,11 @@ hr.registrationForm{
 }
 
 
-
-
-
 .allContent{
     min-height: 100%;
 	height: auto;
     
 }
-
-
 
  
 .contentTwits-dark {
@@ -296,8 +291,6 @@ hr.registrationForm{
 .contentTwits-border {
     box-shadow: inset 0 0 0 7px rgba(255,255,255,.5)
 }
-
-
 
 
 
@@ -324,13 +317,11 @@ hr.registrationForm{
 }
 
 
-
 .containerTwits{
    height:30%;
    margin-top:50px;
    margin-right: 35px;
 }
-
 
 
 
@@ -508,11 +499,6 @@ hr.registrationForm{
     background-color: rgb(255, 255, 255);
     border-color: rgb(0, 0, 0);    
 }
-
-
-
-
-
 
 
 

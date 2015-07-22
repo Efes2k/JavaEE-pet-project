@@ -80,7 +80,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/removeFriend")
-	public @ResponseBody void removeFriend(@RequestParam String username) throws DalException {
+	@ResponseBody public void removeFriend(@RequestParam String username) throws DalException {
 		findFriendToDelete(username);
 	}
 
@@ -100,7 +100,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/addFriend")
-	public @ResponseBody void addFriend(@RequestParam String username) throws DalException {
+	@ResponseBody public void addFriend(@RequestParam String username) throws DalException {
 		User user = getPrincipal();
 		User friend = userDao.findByName(username);
 		MyFriends fr = new MyFriends(user, friend);
@@ -145,7 +145,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/addComment", method = RequestMethod.POST)
-	public @ResponseBody Comment addComment(@RequestParam String commentText, @RequestParam int messageId) throws DalException {
+	@ResponseBody public Comment addComment(@RequestParam String commentText, @RequestParam int messageId) throws DalException {
 		Comment comment = new Comment();
 		comment.setText(commentText);
 		comment.setAuthor(getPrincipal());
@@ -156,7 +156,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/removeComment/{id}", method = RequestMethod.POST)
-	public @ResponseBody String removeComment(@PathVariable int id,	@PathVariable String username) throws DalException {
+	@ResponseBody public String removeComment(@PathVariable int id,	@PathVariable String username) throws DalException {
 		userDao.delete(Comment.class, id);
 		logger.info(getPrincipal().getId() + " remove comment: " + id);
 		return "ok";
@@ -255,7 +255,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/settings/fieldChange", method = RequestMethod.POST)
-	public @ResponseBody User settitgsChange(@RequestParam String fieldId, @RequestParam String changes) throws DalException {
+	@ResponseBody public  User settitgsChange(@RequestParam String fieldId, @RequestParam String changes) throws DalException {
 		userDao.changeField(fieldId, changes, getPrincipal().getId());
 		return userDao.find(User.class, getPrincipal().getId());
 	}
@@ -274,7 +274,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/credentials/{username}/statusChange", method = RequestMethod.POST)
-	public @ResponseBody boolean statusChange(@PathVariable String username, @RequestParam String status) throws DalException {
+	@ResponseBody public boolean statusChange(@PathVariable String username, @RequestParam String status) throws DalException {
 
 		User user = userDao.findByName(username);
 		userDao.changeStatus("accountNonLocked", Boolean.parseBoolean(status), user.getId());
