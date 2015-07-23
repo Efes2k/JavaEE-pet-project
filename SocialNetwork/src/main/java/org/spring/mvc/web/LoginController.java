@@ -13,13 +13,11 @@ public class LoginController {
 	
 	@RequestMapping(value = "/")
 	public String home() {
-		
 		return "login";
 	}
 	
 	@RequestMapping(value = "/signin")
     public String login() {
-		
         return "login";
     }
  

@@ -59,11 +59,8 @@
 				</div>
 			</div>
 			
-
 			<div class="container">
 				<div class="row">
-																																			<!-- Subscribe-->
-					
 					<div class=col-md-4>
 					<div class=col-md-1>
 					</div>
@@ -94,7 +91,6 @@
 					</c:if>
 					</div>
 					</div>
-
 
 																																					<!-- Post new message-->
 					<div class="col-md-8 " style="margin-top: -100px;">
