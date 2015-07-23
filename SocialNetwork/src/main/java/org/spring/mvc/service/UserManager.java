@@ -1,5 +1,6 @@
 package org.spring.mvc.service;
 
+import org.apache.log4j.Logger;
 import org.spring.mvc.dao.UserDAO;
 import org.spring.mvc.entity.User;
 import org.spring.mvc.exception.DalException;
@@ -12,10 +13,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserManager  implements UserDetailsService {
+public class UserManager implements UserDetailsService {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	private static final Logger logger = Logger.getLogger(UserManager.class);
+
 	
 	public UserManager(){
 	}
@@ -33,11 +37,12 @@ public class UserManager  implements UserDetailsService {
 		}
 		
 		if(result == null) {
-			System.out.println("user not found");
+			logger.info("User " + username + " - incorrect login/password");
 			throw new AuthenticationServiceException("Incorrect login/password");
 		}
 
 		if(result.isAccountNonLocked() == false) {
+			logger.info("User " + username + " account has been suspended.");
 			throw new AuthenticationServiceException ("Your account has been suspended. Contact with administrator.");
 		}
 		return result;

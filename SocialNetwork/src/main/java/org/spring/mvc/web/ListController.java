@@ -37,7 +37,7 @@ public class ListController {
 	@Autowired
 	private UserDAO userDao;
 	
-	private static final Logger logger = Logger.getLogger(LoginController.class);
+	private static final Logger logger = Logger.getLogger(ListController.class);
 
 	
 	@RequestMapping(method = RequestMethod.GET)

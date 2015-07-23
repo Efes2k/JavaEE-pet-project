@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.spring.mvc.dao.LocationDao;
 import org.spring.mvc.dao.UserDAO;
 import org.spring.mvc.entity.User;
@@ -25,8 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class RegistrationController {
+	
 	private final String SUCCESS_MESSAGE = "Registration succes";
 	private final String ERROR_MESSAGE = "User with current username already exist";
+	private static final Logger logger = Logger.getLogger(RegistrationController.class);
+
 	
 	@Autowired
 	private UserDAO userDao  ;
@@ -74,8 +78,10 @@ public class RegistrationController {
 			user.setPassword(ph.encode(user.getPassword()));
 			userDao.save(user);
 		} catch (DalException e) {
+			logger.warn("Registration failure: " + e.getMessage() );
 			return "register";
 		}
+		logger.info("Registration success: " + user.getUsername());
 		return "login";
 	}
 	
