@@ -1,14 +1,14 @@
 CREATE TABLE `Country` (  
       `id` int(6) NOT NULL AUTO_INCREMENT,  
-	  `country_name` varchar(200) NOT NULL,  
+      `country_name` varchar(200) NOT NULL,  
       PRIMARY KEY (`id`)  
     ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;  
 	
 CREATE TABLE `city` (  
       `id` int(6) NOT NULL AUTO_INCREMENT,  
-	  `city_name` varchar(200) NOT NULL,  
-  	  `country_id` int(6) NOT NULL,	  
-	  FOREIGN KEY (`country_id`) REFERENCES Country(id), 
+      `city_name` varchar(200) NOT NULL,  
+      `country_id` int(6) NOT NULL,	  
+      FOREIGN KEY (`country_id`) REFERENCES Country(id), 
       PRIMARY KEY (`id`)  
     ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;  
 	
