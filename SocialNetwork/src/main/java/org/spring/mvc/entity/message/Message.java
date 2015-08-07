@@ -16,6 +16,12 @@ import org.hibernate.annotations.CascadeType;
 import org.spring.mvc.entity.Model;
 import org.spring.mvc.entity.User;
 
+
+/**
+ * Simple business object representing a message.
+ *
+ * @author Andrei Bykov
+ */
 @Entity
 @Table(name="message")
 public class Message extends Model implements Serializable {

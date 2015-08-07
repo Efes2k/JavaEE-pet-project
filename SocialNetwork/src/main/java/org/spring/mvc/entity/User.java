@@ -25,6 +25,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
+/**
+ * Simple business object representing a user.
+ *
+ * @author Andrei Bykov
+ */
 @Entity
 @Table(name = "user")
 @JsonIgnoreProperties({ "owner", "where", "messagesWhere","userRoles","avatar","screenImage","myFriends","messages"})

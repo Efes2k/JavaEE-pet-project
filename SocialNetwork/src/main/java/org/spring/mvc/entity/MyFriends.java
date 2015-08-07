@@ -6,6 +6,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Business object representing a friends.
+ *
+ * @author Andrei Bykov
+ */
 @Entity
 @Table(name = "my_friends")
 public class MyFriends extends Model implements Serializable {

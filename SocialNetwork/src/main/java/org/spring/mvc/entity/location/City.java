@@ -15,6 +15,11 @@ import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.spring.mvc.entity.Model;
 import org.spring.mvc.entity.User;
 
+/**
+ * Simple business object representing a city.
+ *
+ * @author Andrei Bykov
+ */
 @Entity
 @Table(name="city")
 //@JsonIgnoreProperties({ "countryIn"})

@@ -5,6 +5,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+/**
+ * Simple business object representing a model.
+ *
+ * @author Andrei Bykov
+ */
 @MappedSuperclass
 public class Model {
 	

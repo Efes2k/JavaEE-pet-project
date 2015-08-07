@@ -11,6 +11,11 @@ import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonBackReference;
 import org.spring.mvc.entity.Model;
 
+/**
+ * Simple business object representing a country.
+ *
+ * @author Andrei Bykov
+ */
 @Entity
 @Table(name="country")
 public class Country extends Model implements Serializable{

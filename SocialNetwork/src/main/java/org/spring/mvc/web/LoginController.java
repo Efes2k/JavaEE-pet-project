@@ -8,13 +8,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+/**
+ *  Controller used for login and logout.
+ *  
+ *  @author Andrei Bykov
+ */
 @Controller
 @RequestMapping(method = RequestMethod.GET)
 public class LoginController {
-	private final String ERROR_MESSAGE = "Incorrect login/password";
 	
+	private final String ERROR_MESSAGE = "Incorrect login/password";
 	private static final Logger logger = Logger.getLogger(LoginController.class);
-
 	
 	@RequestMapping(value = "/")
 	public String home() {

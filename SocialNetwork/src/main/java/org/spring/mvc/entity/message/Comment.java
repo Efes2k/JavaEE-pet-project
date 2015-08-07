@@ -13,6 +13,11 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.spring.mvc.entity.Model;
 import org.spring.mvc.entity.User;
 
+/**
+ * Simple business object representing a comments in messages.
+ *
+ * @author Andrei Bykov
+ */
 @Entity()
 @Table(name="comment")
 @JsonIgnoreProperties({ "messageWhere"})

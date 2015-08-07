@@ -24,6 +24,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+/**
+ *  Controller used for registration new user.
+ *  
+ *  @author Andrei Bykov
+ */
 @Controller
 public class RegistrationController {
 	
@@ -52,13 +58,7 @@ public class RegistrationController {
 		return "register";
 	}
 
-	@RequestMapping(value = "/contactList")
-	public String contactList(Model model) throws DalException {
-		model.addAttribute("contactList", userDao.list(User.class));
-		return "contactList";
-	}
-	 
-	
+	//Validate and register new user
 	@RequestMapping(value = "/add")
 	public String loginJsp(@Valid@ModelAttribute User user, BindingResult result,Model model,@RequestParam Integer cityId) {
 		try {
@@ -85,11 +85,17 @@ public class RegistrationController {
 		return "login";
 	}
 	
-	
+	//Get countries/cities with Ajax
 	@RequestMapping(value="/register/getCities", method= RequestMethod.GET,consumes="text/plain" )
 	public @ResponseBody List<City> getCities(HttpServletRequest request) throws DalException{
 		return locDao.getCitues(Integer.parseInt(request.getParameter("countryId")));
 	}
-
+	
+	@Deprecated
+	@RequestMapping(value = "/contactList")
+	public String contactList(Model model) throws DalException {
+		model.addAttribute("contactList", userDao.list(User.class));
+		return "contactList";
+	}
 	
 }

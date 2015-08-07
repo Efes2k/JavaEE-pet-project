@@ -10,6 +10,11 @@ import javax.persistence.Table;
 import org.spring.mvc.entity.Model;
 
 
+/**
+ * Simple business object representing a messages medias, like photo/audio/video.
+ *
+ * @author Andrei Bykov
+ */
 @Entity()
 @Table(name="message_media")
 public class MessageMedia extends Model implements Serializable {

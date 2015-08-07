@@ -10,6 +10,12 @@ import org.spring.mvc.web.LoginController;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+
+
+/**
+ *  Service class used for encrypting password.
+ */
 @Service
 @Named
 public class PasswordHelper implements PasswordEncoder{

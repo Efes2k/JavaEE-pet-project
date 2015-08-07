@@ -30,6 +30,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+
+/**
+ *  Controller used for:
+ *  -navigation by pages
+ *  -adding/removing messages/comments
+ *  -changing user settings.
+ *  
+ *   @author Andrei Bykov
+ */
 @Controller
 @RequestMapping(value = "/list", method = RequestMethod.GET)
 public class ListController {
@@ -61,7 +70,7 @@ public class ListController {
 		return "list";
 	}
 
-	// Validate subscriber
+	
 	private boolean validateSubcriber(String username) throws DalException {
 		User me = getPrincipal();
 		User friend = userDao.findByName(username);
@@ -80,11 +89,12 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/removeFriend")
-	@ResponseBody public void removeFriend(@RequestParam String username) throws DalException {
+	@ResponseBody
+	public void removeFriend(@RequestParam String username) throws DalException {
 		findFriendToDelete(username);
 	}
 
-	// find friend to delete
+
 	private void findFriendToDelete(String username) throws DalException {
 		User me = userDao.findByName(getPrincipal().getUsername());
 		MyFriends temp = null;
@@ -100,7 +110,8 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/addFriend")
-	@ResponseBody public void addFriend(@RequestParam String username) throws DalException {
+	@ResponseBody 
+	public void addFriend(@RequestParam String username) throws DalException {
 		User user = getPrincipal();
 		User friend = userDao.findByName(username);
 		MyFriends fr = new MyFriends(user, friend);
@@ -145,7 +156,8 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/addComment", method = RequestMethod.POST)
-	@ResponseBody public Comment addComment(@RequestParam String commentText, @RequestParam int messageId) throws DalException {
+	@ResponseBody
+	public Comment addComment(@RequestParam String commentText, @RequestParam int messageId) throws DalException {
 		Comment comment = new Comment();
 		comment.setText(commentText);
 		comment.setAuthor(getPrincipal());
@@ -174,7 +186,7 @@ public class ListController {
 		return "redirect:/list/{username}/settings";
 	}
 	
-	// Validate image
+
 		private boolean validateImage(MultipartFile image) {
 			if (!MediaType.getInstance().getTypeList().contains(image.getContentType())) {
 				logger.info("Bad message's contentType: " + image.getContentType());
@@ -185,7 +197,8 @@ public class ListController {
 
 
 	@RequestMapping(value = "/{username}/imageDisplay")
-	@ResponseBody public byte[] showImage(@PathVariable String username,@RequestParam String scale, @RequestParam Integer h,
+	@ResponseBody
+	public byte[] showImage(@PathVariable String username,@RequestParam String scale, @RequestParam Integer h,
 										  @RequestParam Integer w) throws IOException, DalException {
 		User user = userDao.findByName(username);
 		if (scale.equals("true") && (user.getAvatar() != null)) {
@@ -195,10 +208,11 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/imageDisplay/{id}")
-	@ResponseBody public byte[] showImageMessege(@PathVariable String username,	@PathVariable Integer id, @RequestParam String scale)
-																									throws IOException, DalException {
+	@ResponseBody
+	public byte[] showImageMessege(@PathVariable String username, @PathVariable Integer id, 
+								   @RequestParam String scale)	throws IOException, DalException {
+		
 		Message message = userDao.find(Message.class, id);
-
 		if (scale.equals("true") && (message.getMessMedia().getMedia() != null)) {
 			return scale(message.getMessMedia().getMedia(), 150, 150);
 		}
@@ -255,7 +269,8 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/{username}/settings/fieldChange", method = RequestMethod.POST)
-	@ResponseBody public  User settitgsChange(@RequestParam String fieldId, @RequestParam String changes) throws DalException {
+	@ResponseBody
+	public  User settitgsChange(@RequestParam String fieldId, @RequestParam String changes) throws DalException {
 		userDao.changeField(fieldId, changes, getPrincipal().getId());
 		return userDao.find(User.class, getPrincipal().getId());
 	}
@@ -274,14 +289,15 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/credentials/{username}/statusChange", method = RequestMethod.POST)
-	@ResponseBody public boolean statusChange(@PathVariable String username, @RequestParam String status) throws DalException {
+	@ResponseBody
+	public boolean statusChange(@PathVariable String username, @RequestParam String status) throws DalException {
 
 		User user = userDao.findByName(username);
 		userDao.changeStatus("accountNonLocked", Boolean.parseBoolean(status), user.getId());
 		return Boolean.parseBoolean(status);
 	}
 
-	// Scaling image
+	// Scaling image by specified size
 	public byte[] scale(byte[] fileData, int width, int height)	throws IOException {
 
 		ByteArrayInputStream in = new ByteArrayInputStream(fileData);
@@ -311,7 +327,7 @@ public class ListController {
 		}
 	}
 
-	// Validate user
+	// check user session expired
 	public void validateUser(User user) throws  AccessDeniedException {
 		if (user == null) {
 			logger.warn("user not found");
@@ -319,6 +335,7 @@ public class ListController {
 		}
 	}
 	
+	// check user access rights
 	public void validateUser(User user,String username) throws  AccessDeniedException {
 		if(!user.getUsername().equals(username)) {
 			logger.warn(user.getUsername() + "/" + user.getId() + " try to access " + username);

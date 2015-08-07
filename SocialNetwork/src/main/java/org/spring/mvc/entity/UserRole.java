@@ -10,6 +10,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+/**
+ * Simple business object representing a user roles.
+ *
+ * @author Andrei Bykov
+ */
 @Entity
 @Table(name="role")
 public class UserRole extends Model implements Serializable{
